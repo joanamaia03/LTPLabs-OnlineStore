@@ -171,13 +171,15 @@ export const resultsSummary = css({
 });
 
 export const productImage = css({
-  width: "100%",
-  maxWidth: "12rem",
-  height: "auto",
+  width: "82%",
+  height: "82%",
   aspectRatio: "1",
   display: "block",
-  margin: "0 auto",
-  objectFit: "cover",
+  margin: "auto",
+  objectFit: "contain",
+  background: "#dfe3e7",
+  padding: "0.25rem",
+  boxSizing: "border-box",
 });
 
 export const productTitle = css({
@@ -196,6 +198,91 @@ export const productPrice = css({
   color: "#000",
   fontWeight: "normal",
   margin: "0.25rem 0 0",
+});
+
+export const productDetailLayout = css({
+  display: "grid",
+  gridTemplateColumns: "minmax(0, 1.4fr) minmax(18rem, 0.9fr)",
+  gap: "2rem",
+  alignItems: "stretch",
+  minHeight: "24rem",
+  marginTop: "1rem",
+  "@media (max-width: 48rem)": {
+    gridTemplateColumns: "1fr",
+  },
+});
+
+export const productDetailImage = css({
+  width: "100%",
+  height: "100%",
+  minHeight: "20rem",
+  maxHeight: "24rem",
+  margin: "auto",
+  background: "#dfe3e7",
+  display: "block",
+  objectFit: "contain",
+});
+
+export const productDetailPanel = css({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "flex-start",
+  paddingTop: "0.5rem",
+  gap: "1rem",
+});
+
+export const productDetailTitle = css({
+  fontSize: "2rem",
+  margin: 0,
+  lineHeight: 1.2,
+  fontWeight: "700",
+});
+
+export const productDetailPrice = css({
+  fontSize: "1.25rem",
+  fontWeight: "700",
+  margin: 0,
+  color: "#111827",
+});
+
+export const productDetailButton = css({
+  width: "100%",
+  background: "#1f2a3a",
+  color: "#fff",
+  border: "none",
+  borderRadius: "0.2rem",
+  padding: "0.9rem 1rem",
+  fontSize: "0.9rem",
+  fontWeight: "600",
+  textTransform: "uppercase",
+  letterSpacing: "0.02em",
+  cursor: "pointer",
+});
+
+export const productDetailDivider = css({
+  border: "0",
+  borderTop: "1px solid #d7dbe0",
+  margin: "0.5rem 0 0",
+});
+
+export const productDetailSection = css({
+  margin: 0,
+  display: "flex",
+  flexDirection: "column",
+  gap: "0.5rem",
+});
+
+export const productDetailSectionTitle = css({
+  margin: 0,
+  fontSize: "1rem",
+  fontWeight: "700",
+});
+
+export const productDetailDescription = css({
+  margin: 0,
+  lineHeight: 1.7,
+  color: "#444",
+  fontSize: "0.96rem",
 });
 
 export const pagination = css({

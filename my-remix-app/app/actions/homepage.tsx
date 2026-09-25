@@ -1,8 +1,9 @@
-import type { Handle } from "remix/ui";
+import { on, type Handle } from "remix/ui";
 import { Document } from "./document.tsx";
 import { PRODUCTS_PER_PAGE, type Product, type ProductCategory, type ProductSort } from "./products/data.ts";
 import { SortForm } from "./products/public/sort-form.tsx";
 import { CategoryFilters } from "./products/public/category-filters.tsx";
+import { AddToCartButton } from "./public/add-to-cart-button.tsx";
 import * as styles from "../styles.ts";
 
 export function ProductDetailPage(
@@ -26,19 +27,19 @@ export function ProductDetailPage(
               <a href="/blog" mix={styles.link}>Blog</a>
             </div>
             <div mix={styles.navigationActions}>
-              <a href="/?search=" mix={styles.link} aria-label="Search" title="Search">
+              <a href="#" mix={[styles.link, on("click", (event) => event.preventDefault())]} aria-label="Search" title="Search">
                 <img
                   src="https://img.icons8.com/?size=100&id=132&format=png&color=000000"
                   alt=""
                 />
               </a>
-              <a href="/?profile=" mix={styles.link} aria-label="Profile" title="Profile">
+              <a href="#" mix={[styles.link, on("click", (event) => event.preventDefault())]} aria-label="Profile" title="Profile">
                 <img
                   src="https://img.icons8.com/?size=100&id=95101&format=png&color=000000"
                   alt=""
                 />
               </a>
-              <a href="/?cart=" mix={styles.link} aria-label="Cart" title="Cart">
+              <a href="/cart" mix={styles.link} aria-label="Cart" title="Cart">
                 <img
                   src="https://img.icons8.com/?size=100&id=42382&format=png&color=000000"
                   alt=""
@@ -46,16 +47,30 @@ export function ProductDetailPage(
               </a>
             </div>
           </nav>
-          <article style={{ display: 'grid', gridTemplateColumns: 'minmax(240px, 360px) 1fr', gap: '2rem', padding: '2rem' }}>
-            <img src={product.thumbnail} alt={product.title} width="360" height="360" style={{ borderRadius: '12px', objectFit: 'cover' }} />
+          <div mix={styles.productDetailLayout}>
             <div>
-              <p mix={styles.productCategory}>{product.category}</p>
-              <h2 mix={styles.productTitle}>{product.title}</h2>
-              <p mix={styles.productPrice}>{product.price.toFixed(2)} €</p>
-              <p>{product.description}</p>
-              <a href="/" mix={styles.link}>Back to all products</a>
+              <img
+                src={product.thumbnail}
+                alt={product.title}
+                mix={styles.productDetailImage}
+              />
             </div>
-          </article>
+            <aside mix={styles.productDetailPanel}>
+              <h2 mix={styles.productDetailTitle}>{product.title}</h2>
+              <p mix={styles.productDetailPrice}>${product.price.toFixed(2)}</p>
+              <AddToCartButton
+                productId={product.id}
+                title={product.title}
+                price={product.price}
+                thumbnail={product.thumbnail}
+              />
+              <hr mix={styles.productDetailDivider} />
+              <div mix={styles.productDetailSection}>
+                <h3 mix={styles.productDetailSectionTitle}>Product Details</h3>
+                <p mix={styles.productDetailDescription}>{product.description}</p>
+              </div>
+            </aside>
+          </div>
         </main>
       </Document>
     );
@@ -105,19 +120,19 @@ export function ProductListPage(
               <a href="/blog" mix={styles.link}>Blog</a>
             </div>
             <div mix={styles.navigationActions}>
-              <a href="/?search=" mix={styles.link} aria-label="Search" title="Search">
+              <a href="#" mix={[styles.link, on("click", (event) => event.preventDefault())]} aria-label="Search" title="Search">
                 <img
                   src="https://img.icons8.com/?size=100&id=132&format=png&color=000000"
                   alt=""
                 />
               </a>
-              <a href="/?profile=" mix={styles.link} aria-label="Profile" title="Profile">
+              <a href="#" mix={[styles.link, on("click", (event) => event.preventDefault())]} aria-label="Profile" title="Profile">
                 <img
                   src="https://img.icons8.com/?size=100&id=95101&format=png&color=000000"
                   alt=""
                 />
               </a>
-              <a href="/?cart=" mix={styles.link} aria-label="Cart" title="Cart">
+              <a href="/cart" mix={styles.link} aria-label="Cart" title="Cart">
                 <img
                   src="https://img.icons8.com/?size=100&id=42382&format=png&color=000000"
                   alt=""
@@ -138,15 +153,17 @@ export function ProductListPage(
             <section mix={styles.productGrid}>
               {products.map((product) => (
                 <article key={product.id}>
-                  <a href={`/products/${product.id}`} mix={styles.link}>
-                    <img
-                      src={product.thumbnail}
-                      alt={product.title}
-                      width="240"
-                      height="240"
-                      mix={styles.productImage}
-                    />
-                  </a>
+                  <div style={{ background: '#dfe3e7', width: '100%', aspectRatio: '1 / 1', display: 'grid', placeItems: 'center', padding: '0.5rem', boxSizing: 'border-box' }}>
+                    <a href={`/products/${product.id}`} mix={styles.link}>
+                      <img
+                        src={product.thumbnail}
+                        alt={product.title}
+                        width="240"
+                        height="240"
+                        mix={styles.productImage}
+                      />
+                    </a>
+                  </div>
                   <p mix={styles.productCategory}>{product.category}</p>
                   <h2 mix={styles.productTitle}>
                     <a href={`/products/${product.id}`} mix={styles.link}>{product.title}</a>

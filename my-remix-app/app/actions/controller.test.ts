@@ -27,4 +27,11 @@ describe('root controller', () => {
     assert.equal(response.status, 200)
     assert.match(await response.text(), /Essence Mascara Lash Princess|product/i)
   })
+
+  it('GET /cart returns the cart page', async () => {
+    let response = await router.fetch(new URL('/cart', 'http://localhost'))
+
+    assert.equal(response.status, 200)
+    assert.match(await response.text(), /Cart Summary/)
+  })
 })

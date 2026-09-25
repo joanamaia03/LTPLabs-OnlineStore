@@ -2,6 +2,7 @@ import { createController } from 'remix/router'
 import { assets } from '../assets.ts'
 import { routes } from '../routes.ts'
 import { getCategories, getProduct, getProducts, type ProductSort } from './products/data.ts'
+import { CartPage } from './cart.tsx'
 import { ProductDetailPage, ProductListPage } from './homepage.tsx'
 
 export default createController(routes, {
@@ -37,6 +38,9 @@ export default createController(routes, {
       } catch {
         return new Response('Unable to load product', { status: 404 })
       }
+    },
+    async cart(context) {
+      return context.render(<CartPage />)
     },
   },
 })
