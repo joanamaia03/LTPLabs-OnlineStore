@@ -1,9 +1,17 @@
 import { css } from "remix/ui";
 
 export const main = css({
-  maxWidth: "70rem",
-  margin: "0 auto",
-  padding: "0.5rem 1.5rem 2rem",
+  width: "100%",
+  boxSizing: "border-box",
+  padding: "0.5rem 1.5rem 2rem 2rem",
+  background: "#fcefe2",
+});
+
+export const documentBody = css({
+  margin: 0,
+  overflowY: "scroll",
+  fontFamily: "Arial, sans-serif",
+  background: "#fcefe2",
 });
 
 export const mainNavigation = css({
@@ -11,9 +19,14 @@ export const mainNavigation = css({
   gridTemplateColumns: "1fr auto 1fr",
   gridTemplateAreas: '"brand links actions"',
   alignItems: "center",
-  padding: "0.5rem 0 0.75rem",
+  width: "calc(100% + 3.5rem)",
+  boxSizing: "border-box",
+  padding: "1rem 1.5rem 0.75rem 2rem",
+  marginTop: "-0.5rem",
+  marginLeft: "-2rem",
   marginBottom: "2rem",
-  borderBottom: "1px solid #ddd",
+  background: "#ffdfbe",
+  borderBottom: "1px solid #040b30",
   "& h1": {
     margin: 0,
     fontSize: "1.5rem",
@@ -28,13 +41,15 @@ export const mainNavigation = css({
 
 export const navigationBrand = css({
   gridArea: "brand",
+  color: "#040b30",
 });
 
 export const navigationLinks = css({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  gap: "2rem",
+  gap: "1rem",
+  color: "#040b30",
   gridArea: "links",
   "@media (max-width: 48rem)": {
     flexWrap: "wrap",
@@ -48,20 +63,80 @@ export const navigationActions = css({
   justifyContent: "flex-end",
   gap: "0.75rem",
   gridArea: "actions",
-  "& a": {
-    display: "flex",
-    alignItems: "center",
-  },
-  "& img": {
-    width: "1.50rem",
-    height: "1.50rem",
+});
+
+export const navigationIcon = css({
+  color: "#040b30",
+  display: "flex",
+  alignItems: "center",
+  "& svg": {
+    width: "1.5rem",
+    height: "1.5rem",
     display: "block",
   },
+});
+
+export const searchMenu = css({
+  position: "relative",
+  "& summary": {
+    listStyle: "none",
+    cursor: "pointer",
+  },
+  "& summary::-webkit-details-marker": {
+    display: "none",
+  },
+});
+
+export const searchForm = css({
+  position: "absolute",
+  top: "50%",
+  right: "calc(100% + 0.5rem)",
+  transform: "translateY(-50%)",
+  zIndex: 5,
+  display: "flex",
+  gap: "0.35rem",
+  padding: "0.5rem",
+  borderRadius: "0.25rem",
+  "@media (max-width: 48rem)": {
+    top: "calc(100% + 0.6rem)",
+    right: 0,
+    transform: "none",
+  },
+});
+
+export const searchInput = css({
+  width: "12rem",
+  padding: "0.4rem 0.5rem",
+  border: "1px solid #c1c1c1",
+  borderRadius: "0.2rem",
+  font: "inherit",
+  color: "#040b30",
+});
+
+export const searchButton = css({
+  border: 0,
+  borderRadius: "0.2rem",
+  padding: "0.4rem 0.65rem",
+  background: "#040b30",
+  color: "#fffbf5",
+  font: "inherit",
+  cursor: "pointer",
 });
 
 export const link = css({
   color: "inherit",
   textDecoration: "none",
+});
+
+export const navigationLink = css({
+  transition: "color 150ms ease",
+  "&:hover, &:focus-visible": {
+    color: "#656f7f",
+  },
+});
+
+export const navigationLinkActive = css({
+  color: "#656f7f",
 });
 
 export const productGrid = css({
@@ -96,7 +171,8 @@ export const categories = css({
   flexDirection: "column",
   gap: "0.75rem",
   paddingLeft: "1rem",
-  borderLeft: "1px solid #ddd",
+  fontSize: "0.85rem",
+  borderLeft: "1px solid #c1c1c1",
   "& form": {
     display: "flex",
     flexDirection: "column",
@@ -153,6 +229,7 @@ export const categoriesHeading = css({
   paddingLeft: "1rem",
   fontSize: "1rem",
   fontWeight: "normal",
+  color: "#040b30",
   "@media (max-width: 48rem)": {
     paddingLeft: 0,
     fontSize: "0.9rem",
@@ -164,7 +241,7 @@ export const categoriesHeading = css({
 
 export const resultsSummary = css({
   margin: 0,
-  color: "#666",
+  color: "#8b8a91",
   fontSize: "0.9rem",
   textAlign: "right",
   justifySelf: "end",
@@ -177,25 +254,48 @@ export const productImage = css({
   display: "block",
   margin: "auto",
   objectFit: "contain",
-  background: "#dfe3e7",
+  background: "#fffbf5",
   padding: "0.25rem",
   boxSizing: "border-box",
+});
+
+export const productCardFrame = css({
+  background: "#fffbf5",
+  border: "1px solid #c1c1c1",
+  width: "100%",
+  aspectRatio: "1 / 1",
+  display: "grid",
+  placeItems: "center",
+  padding: "0.5rem",
+  boxSizing: "border-box",
+  transition: "border-color 150ms ease",
+  "&:hover": {
+    borderColor: "#040b30",
+  },
+});
+
+export const productLink = css({
+  transition: "color 150ms ease",
+  "&:hover, &:focus-visible": {
+    color: "#040b30",
+  },
 });
 
 export const productTitle = css({
   fontSize: "1rem",
   margin: "0.5rem 0 0.25rem",
   fontWeight: "bold",
+  color: "#040b30",
 });
 
 export const productCategory = css({
-  color: "#666",
+  color: "#8b8a91",
   textTransform: "capitalize",
 });
 
 export const productPrice = css({
   fontSize: "1rem",
-  color: "#000",
+  color: "#161b32",
   fontWeight: "normal",
   margin: "0.25rem 0 0",
 });
@@ -212,13 +312,26 @@ export const productDetailLayout = css({
   },
 });
 
+export const backButton = css({
+  display: "inline-block",
+  marginBottom: "1rem",
+  color: "#040b30",
+  fontSize: "0.95rem",
+  textDecoration: "none",
+  transition: "color 150ms ease",
+  "&:hover, &:focus-visible": {
+    color: "#656f7f",
+  },
+});
+
 export const productDetailImage = css({
   width: "100%",
   height: "100%",
   minHeight: "20rem",
   maxHeight: "24rem",
   margin: "auto",
-  background: "#dfe3e7",
+  background: "#fffbf5",
+  border: "1px solid #c1c1c1",
   display: "block",
   objectFit: "contain",
 });
@@ -236,13 +349,14 @@ export const productDetailTitle = css({
   margin: 0,
   lineHeight: 1.2,
   fontWeight: "700",
+  color: "#040b30",
 });
 
 export const productDetailPrice = css({
   fontSize: "1.25rem",
   fontWeight: "700",
   margin: 0,
-  color: "#111827",
+  color: "#040b30",
 });
 
 export const productDetailButton = css({
@@ -261,7 +375,7 @@ export const productDetailButton = css({
 
 export const productDetailDivider = css({
   border: "0",
-  borderTop: "1px solid #d7dbe0",
+  borderTop: "1px solid #c1c1c1",
   margin: "0.5rem 0 0",
 });
 
@@ -276,6 +390,7 @@ export const productDetailSectionTitle = css({
   margin: 0,
   fontSize: "1rem",
   fontWeight: "700",
+  color: "#040b30",
 });
 
 export const productDetailDescription = css({
@@ -300,11 +415,14 @@ export const paginationLink = css({
   height: "2rem",
   borderRadius: "0.4rem",
   fontSize: "0.8rem",
+  color: "#040b30",
 });
 
 export const paginationActive = css({
-  background: "#1f2937",
-  color: "#fff",
+  background: "#ffdfbe",
+  border: "1px solid #040b30",
+  boxSizing: "border-box",
+  color: "#040b30",
 });
 
 export const paginationNext = css({
@@ -313,4 +431,5 @@ export const paginationNext = css({
   width: "2rem",
   height: "2rem",
   fontSize: "1.3rem",
+  color: "#040b30",
 });

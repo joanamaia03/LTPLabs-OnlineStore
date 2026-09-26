@@ -110,8 +110,8 @@ function isCartItem(value: unknown): value is CartItem {
 
 const buttonStyle = css({
   width: "100%",
-  background: "#1f2a3a",
-  color: "#fff",
+  background: "#040b30",
+  color: "#fffbf5",
   border: "none",
   borderRadius: "0.2rem",
   padding: "0.9rem 1rem",
@@ -120,6 +120,10 @@ const buttonStyle = css({
   textTransform: "uppercase",
   letterSpacing: "0.02em",
   cursor: "pointer",
+  transition: "background-color 150ms ease",
+  "&:hover, &:focus-visible": {
+    background: "#1b3052",
+  },
 });
 
 const popupOverlay = css({
@@ -134,8 +138,8 @@ const popupOverlay = css({
 
 const popupCard = css({
   width: "min(100%, 26rem)",
-  background: "#fff",
-  border: "1px solid #26384d",
+  background: "#fcefe2",
+  border: "1px solid #040b30",
   borderRadius: "0.5rem",
   padding: "1.25rem",
   boxSizing: "border-box",
@@ -152,7 +156,8 @@ const popupImage = css({
   width: "5rem",
   height: "5rem",
   objectFit: "contain",
-  background: "#e9ecef",
+  background: "#fffbf5",
+  border: "1px solid #c1c1c1",
 });
 
 const popupEyebrow = css({
@@ -163,7 +168,7 @@ const popupEyebrow = css({
 
 const popupTitle = css({
   margin: "0.25rem 0",
-  color: "#26384d",
+  color: "#040b30",
   fontSize: "1rem",
 });
 
@@ -184,21 +189,29 @@ const goToCartButton = css({
   flex: 1,
   textAlign: "center",
   textDecoration: "none",
-  background: "#1f2a3a",
-  color: "#fff",
+  background: "#040b30",
+  color: "#fffbf5",
   borderRadius: "0.2rem",
   padding: "0.7rem 0.8rem",
   fontSize: "0.75rem",
   fontWeight: "600",
+  transition: "background-color 150ms ease",
+  "&:hover, &:focus-visible": {
+    background: "#1b3052",
+  },
 });
 
 const continueButton = css({
   flex: 1,
-  background: "#fff",
-  color: "#1f2a3a",
-  border: "1px solid #1f2a3a",
+  background: "#fffbf5",
+  color: "#040b30",
+  border: "1px solid #040b30",
   borderRadius: "0.2rem",
   padding: "0.7rem 0.8rem",
   fontSize: "0.75rem",
   cursor: "pointer",
+  transition: "background-color 150ms ease",
+  "&:hover, &:focus-visible": {
+    background: "#ffffff",
+  },
 });

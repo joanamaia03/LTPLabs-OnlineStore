@@ -1,8 +1,8 @@
 import type { Handle, RemixNode } from 'remix/ui'
-import { css } from 'remix/ui'
 import { ImportMap } from 'remix/ui/server'
 
 import { scriptEntry } from '../assets.ts'
+import * as styles from '../styles.ts'
 
 export interface DocumentProps {
   children?: RemixNode
@@ -32,7 +32,7 @@ export function Document(handle: Handle<DocumentProps>) {
           ))}
           <script type="module" src={href}></script>
         </head>
-        <body mix={css({ margin: 0 })}>{children}</body>
+        <body mix={styles.documentBody}>{children}</body>
       </html>
     )
   }

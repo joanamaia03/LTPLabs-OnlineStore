@@ -35,7 +35,7 @@ export async function getProduct(productId: number) {
 
   return (await response.json()) as Product;
 }
-
+4
 export async function getProducts(page: number, sort: ProductSort, category?: string | string[]) {
   let selectedCategories = normalizeCategories(category);
   let skip = (page - 1) * PRODUCTS_PER_PAGE;
